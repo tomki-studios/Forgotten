@@ -550,7 +550,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 597910925}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26f0c5d682626cc4a9cf99694088557a, type: 3}
   m_Name: 
@@ -814,7 +814,7 @@ MonoBehaviour:
   SunsetSkybox: {fileID: 2100000, guid: 71e5d8c2d9e04bd46b0fe84ddeaa81d7, type: 2}
   NightSkybox: {fileID: 2100000, guid: b7873b3c856f4f54085a886e3bc94d0a, type: 2}
   PartsOfDay: {fileID: 963194229}
-  Sunrise: 0
+  Sunrise: 1
   Midday: 0
   Sunset: 0
   Night: 0
