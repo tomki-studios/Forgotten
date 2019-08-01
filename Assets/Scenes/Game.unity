@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.8223443, g: 0.5050793, b: 0.44776922, a: 1}
+  m_IndirectSpecularColor: {r: 0.8221752, g: 0.5048766, b: 0.4477356, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -614,6 +614,23 @@ MonoBehaviour:
   JumpHeight: 0
   Speed: 0
   Sprint: 0
+--- !u!114 &597910932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597910925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a09ac5ff826d0e469a012f00993280c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 597910929}
+  stats: {fileID: 597910930}
+  minSurviveTime: 1.6
+  damageForSeconds: 1.5
+  airTime: 0
 --- !u!1 &605555299
 GameObject:
   m_ObjectHideFlags: 0
@@ -946,11 +963,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4442498409400894, guid: 657f6157bf2b35d44aeef4b804614fc4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00000015358503
+      value: 9.35
       objectReference: {fileID: 0}
     - target: {fileID: 4442498409400894, guid: 657f6157bf2b35d44aeef4b804614fc4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.6883397
+      value: -5.47
       objectReference: {fileID: 0}
     - target: {fileID: 4442498409400894, guid: 657f6157bf2b35d44aeef4b804614fc4, type: 3}
       propertyPath: m_LocalRotation.x
