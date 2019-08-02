@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using UnityEngine;
 
 namespace Assets.Items.ItemTypes.WeaponTypes
 {
@@ -11,30 +7,33 @@ namespace Assets.Items.ItemTypes.WeaponTypes
         arrow, bullet, laser 
     }
 
+    public enum FiringMode
+    {
+        automatic, semiAutomatic
+    }
+
     public class RangeWeapon : WeaponClass
     {
         public projectileType projType;
+        public FiringMode fireMode;
         public int magazineSize;
 
-       
-
-        
-        public RangeWeapon( 
-            int eqPosition, 
-            float amount, 
-            float weight, 
-            float value, 
-            float damageOnHit, 
-            float usage, 
-            float attackSpeed, 
-            projectileType projType, 
-            int magazineSize
-        ) : base(eqPosition, amount, weight, value, damageOnHit, usage, attackSpeed)
-
+        public void Shot()
         {
-            projType = this.projType;
-            magazineSize = this.magazineSize;
+
         }
 
+        public void Reload()
+        {
+
+        }
+
+        void Update()
+        {
+            if(Input.GetMouseButtonDown(1) && fireMode == FiringMode.semiAutomatic)
+            {
+                Shot();
+            }
+        }
     }
 }
