@@ -12,7 +12,7 @@ namespace Assets.Items.ItemTypes.WeaponTypes
         automatic, semiAutomatic
     }
 
-    public class RangeWeapon : WeaponClass
+    public class RangeWeaponClass : WeaponClass
     {
         public projectileType projType;
         public FiringMode fireMode;

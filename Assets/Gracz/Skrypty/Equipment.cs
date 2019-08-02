@@ -1,16 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.Items;
+using Assets.Items.ItemTypes;
+using Assets.Items.ItemTypes.WeaponTypes;
+using Assets.Items.ItemTypes.WeaponTypes.MeleeWeapons;
+
 
 public class Equipment : MonoBehaviour
 {
-    public List<GameObject> eq = new List<GameObject>();
+    public List<ItemClass> eq = new List<ItemClass>();
     public GameObject panelEq;
     public PlayerMovement playerMovement;
     // Start is called before the first frame update
     void Start()
     {
-        AddSword();    //just for debbuging
+        AddItemToEq(Sword());    //just for debbuging
     }
 
     // Update is called once per frame
@@ -37,18 +42,20 @@ public class Equipment : MonoBehaviour
 
     }
 
-    public GameObject Sword() //create sword item
+    public SwordClass Sword() //create sword item
     {
-        GameObject itemSword = new GameObject();
-        itemSword.AddComponent<MeleeClass>().attackSpeed = 1;
-        itemSword.GetComponent<MeleeClass>().weight = 1;
-        itemSword.GetComponent<MeleeClass>().value= 1;
-        itemSword.GetComponent<MeleeClass>().dmg= 1;
-        itemSword.GetComponent<MeleeClass>().description= "Just a test sword";
-        itemSword.GetComponent<MeleeClass>().name= "Test Sword";
+        SwordClass itemSword = new SwordClass();
+        itemSword.attackRange = 1;
+        itemSword.coneRange = 45;
+        itemSword.attackSpeed = 1;
+        itemSword.weight = 1;
+        itemSword.value= 1;
+        itemSword.damageOnHit= 1;
+        itemSword.description= "Just a test sword";
+        itemSword.itemName= "Test Sword";
         return itemSword;
     }
-    public void AddSword() //add item to eq
+    public void AddItemToEq(ItemClass item) //add item to eq
     {
         #region TO;DO
         //if (actualWeight <= MaxWeight)     //checking if weight isn't passed
@@ -97,7 +104,7 @@ public class Equipment : MonoBehaviour
 
         // }
         #endregion
-        eq.Add(Sword());
+        eq.Add(item);
 
 
     }

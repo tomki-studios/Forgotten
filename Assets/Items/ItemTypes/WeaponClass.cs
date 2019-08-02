@@ -2,8 +2,11 @@
 {
     public class WeaponClass : ItemClass
     {
+        //Obrażenia
         public float damageOnHit;
-        public float usage;
+        //Zużycie
+        public float usage = 100;
+        //Prędkość ataku
         public float attackSpeed;
     }
 }
