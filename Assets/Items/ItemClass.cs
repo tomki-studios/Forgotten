@@ -4,6 +4,8 @@ namespace Assets.Items
 {
     public class ItemClass : MonoBehaviour
     {
+        //Posiadacz
+        public GameObject owner;
         //Nazwa
         public string itemName;
         //Opis

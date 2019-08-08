@@ -56,7 +56,7 @@ public class PlayerMovement : MonoBehaviour {
 			currentJumpHeight += Physics.gravity.y * Time.deltaTime;
 		}
 		
-		Debug.Log (Physics.gravity.y);
+		//Debug.Log (Physics.gravity.y);
 
         
 
