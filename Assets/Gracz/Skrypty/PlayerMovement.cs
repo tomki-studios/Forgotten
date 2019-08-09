@@ -19,9 +19,7 @@ public class PlayerMovement : MonoBehaviour {
 
     //Bartek A.
     public TabReading TR;
-    public bool canWalk = true;
-    public bool canJump = true;
-    public bool canLookAround = true;
+    public bool AbleToMove = true;
 
 	void Start () {
 		characterControler = GetComponent<CharacterController>();
@@ -34,9 +32,11 @@ public class PlayerMovement : MonoBehaviour {
         {
             Sprint();
         }
-        keyboard();
-        if(canLookAround) //dodanie zmiennej bool(Bartek A.)
-		    mouse();
+        if (AbleToMove) //Bartek A.
+        {
+            keyboard();
+            mouse();
+        }
         Read(); // Bartek A.
 	}
 
@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour {
 		
 	
 		
-		if(characterControler.isGrounded && Input.GetButton("Jump") && canJump){ //dodanie zmiennej bool(Bartek A.)
+		if(characterControler.isGrounded && Input.GetButton("Jump")){
 			currentJumpHeight = jumpHeight;
 		} else if (!characterControler.isGrounded ){
 			
@@ -73,14 +73,13 @@ public class PlayerMovement : MonoBehaviour {
                 Stats.Sprint = false; //K
                 movementSpeed = 9.0f;
             }
-        if (canWalk) // dodanie zmiennej bool (Bartek A.)
-        {
-            Vector3 movement = new Vector3(movementLeftRight, currentJumpHeight, movementFrontBack);
 
-            movement = transform.rotation * movement;
+        Vector3 movement = new Vector3(movementLeftRight, currentJumpHeight, movementFrontBack);
 
-            characterControler.Move(movement * Time.deltaTime);
-        }
+        movement = transform.rotation * movement;
+
+        characterControler.Move(movement * Time.deltaTime);
+
 	}
 
 	
@@ -115,9 +114,8 @@ public class PlayerMovement : MonoBehaviour {
                 TR.TabToRead = Instantiate(TR.TabToReadPrefab, TR.canvas);
                 TR.Tabs++;
                 TR.TabCreated = true;
-                canWalk = false;
-                canJump = false;
-                canLookAround = false;
+                AbleToMove = false;
+                
             }
             else if (TR.TabCreated)
             {
@@ -126,25 +124,9 @@ public class PlayerMovement : MonoBehaviour {
                     Destroy(TR.TabToRead);
                     TR.Tabs--;
                     TR.TabCreated = false;
-                    canWalk = true;
-                    canJump = true;
-                    canLookAround = true;
+                    AbleToMove = true;
                 }
             }
-        }
-    }
-    //Bartek A.
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.name == "Tab")
-            TR.canRead = true;
-    }
-    //Bartek A.
-    private void OnTriggerExit(Collider other)
-    {
-        if(other.name == "Tab")
-        {
-            TR.canRead = false;
         }
     }
 }

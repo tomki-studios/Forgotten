@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.8223443, g: 0.5050793, b: 0.44776922, a: 1}
+  m_IndirectSpecularColor: {r: 0.82209826, g: 0.5043293, b: 0.4474877, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -769,9 +769,7 @@ MonoBehaviour:
   mouseUpDownRange: 90
   Stats: {fileID: 597910930}
   TR: {fileID: 1331836552}
-  canWalk: 1
-  canJump: 1
-  canLookAround: 1
+  AbleToMove: 1
 --- !u!143 &597910929
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1385,8 +1383,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.0446694, y: 2.963276, z: 33.143524}
-  m_Center: {x: -0.10561502, y: -0.98163795, z: 16.429426}
+  m_Size: {x: 2.0446694, y: 4.0600147, z: 33.143524}
+  m_Center: {x: -0.10561502, y: -0.43326855, z: 16.429426}
 --- !u!23 &1331836554
 MeshRenderer:
   m_ObjectHideFlags: 0

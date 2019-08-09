@@ -14,6 +14,20 @@ public class TabReading : MonoBehaviour
     void Start() {}
 
     void Update() {}
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name == "SurvivalCharacter_medium")
+            canRead = true;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.name == "SurvivalCharacter_medium")
+        {
+            canRead = false;
+        }
+    }
 }
 
 //Bartek A. cały skrypt stworzony przeze mnie
