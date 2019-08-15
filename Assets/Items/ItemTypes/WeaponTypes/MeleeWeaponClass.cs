@@ -20,14 +20,15 @@ namespace Assets.Items.ItemTypes.WeaponTypes
 
         void Start()
         {
-            headTrans = owner.transform.GetChild(0).GetComponent<Transform>();
+            headTrans = owner.transform.GetChild(1).GetComponent<Transform>();
 
         }
 
         void Update()
         {
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetKeyDown(KeyCode.P))
             {
+                Debug.Log("leftmouse");
                 PerformAttack();
             }
         }
@@ -47,16 +48,13 @@ namespace Assets.Items.ItemTypes.WeaponTypes
 
                     if (angle <= coneRange)
                     {
+                        usage -= usagePerAttack;
                         enemy.GetComponent<Stats>().Health -= damageOnHit;
                         Debug.Log("Hit");
                     }
                 }
 
             }
-
-
-
-
         }
     }
 }

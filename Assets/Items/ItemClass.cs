@@ -13,7 +13,7 @@ namespace Assets.Items
         //Pozycja w eq
         public int eqPosition;
         //Ilość
-        public float amount = 1;
+        public float amount = 1f;
         //Waga
         public float weight;
         //Wartość

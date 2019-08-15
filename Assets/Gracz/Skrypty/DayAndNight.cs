@@ -74,22 +74,22 @@ public class DayAndNight : MonoBehaviour
 
     private void SetSunrise()
     {
-        PartsOfDay.material.CopyPropertiesFromMaterial(SunriseSkybox);
+        PartsOfDay.material=SunriseSkybox;
         Sunrise = true;
     }
     private void SetMidDay()
     {
-        PartsOfDay.material.CopyPropertiesFromMaterial(MidDaySkybox);
+        PartsOfDay.material=MidDaySkybox;
         Midday = true;
     }
     private void SetSunset()
     {
-        PartsOfDay.material.CopyPropertiesFromMaterial(SunsetSkybox);
+        PartsOfDay.material=SunsetSkybox;
         Sunset = true;
     }
     private void SetNight()
     {
-        PartsOfDay.material.CopyPropertiesFromMaterial(NightSkybox);
+        PartsOfDay.material=NightSkybox;
         Night = true;
     }
 }

@@ -9,13 +9,14 @@ using Assets.Items.ItemTypes.WeaponTypes.MeleeWeapons;
 
 public class Equipment : MonoBehaviour
 {
-    public List<ItemClass> eq = new List<ItemClass>();
+    public List<GameObject> eq = new List<GameObject>();
     public GameObject panelEq;
     public PlayerMovement playerMovement;
     // Start is called before the first frame update
     void Start()
     {
-        AddItemToEq(Sword());    //just for debbuging
+        //AddItemToEq(Sword());    //just for debbuging
+        panelEq.SetActive(false);
     }
 
     // Update is called once per frame
@@ -42,23 +43,23 @@ public class Equipment : MonoBehaviour
 
     }
 
-    public SwordClass Sword() //create sword item
+    public GameObject Sword() //create sword item
     {
-        SwordClass itemSword = new SwordClass();
-        itemSword.attackRange = 1;
-        itemSword.coneRange = 45;
-        itemSword.attackSpeed = 1;
-        itemSword.weight = 1;
-        itemSword.value= 1;
-        itemSword.damageOnHit= 1;
-        itemSword.description= "Just a test sword";
-        itemSword.itemName= "Test Sword";
+        GameObject itemSword = new GameObject();
+        itemSword.AddComponent<SwordClass>().attackRange = 1;
+        itemSword.GetComponent<SwordClass>().coneRange = 45;
+        itemSword.GetComponent<SwordClass>().attackSpeed = 1;
+        itemSword.GetComponent<SwordClass>().weight = 1;
+        itemSword.GetComponent<SwordClass>().value= 1;
+        itemSword.GetComponent<SwordClass>().damageOnHit= 1;
+        itemSword.GetComponent<SwordClass>().description= "Just a test sword";
+        itemSword.GetComponent<SwordClass>().itemName= "Test Sword";
         return itemSword;
     }
-    public void AddItemToEq(ItemClass item) //add item to eq
+    public void AddItemToEq(GameObject item) //add item to eq
     {
         #region TO;DO
-        //if (actualWeight <= MaxWeight)     //checking if weight isn't passed
+        //if (currWeight <= MaxWeight)     //checking if weight isn't passed
         //{
         //switch (EqLvl)                    //checking actual Eq level and restricting list to specific size
         //{
@@ -104,6 +105,7 @@ public class Equipment : MonoBehaviour
 
         // }
         #endregion
+        item.GetComponent<ItemClass>().owner = this.gameObject;
         eq.Add(item);
 
 
