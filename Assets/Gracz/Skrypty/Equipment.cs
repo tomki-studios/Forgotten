@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Assets.Items;
 using Assets.Items.ItemTypes;
 using Assets.Items.ItemTypes.WeaponTypes;
@@ -10,12 +11,19 @@ using Assets.Items.ItemTypes.WeaponTypes.MeleeWeapons;
 public class Equipment : MonoBehaviour
 {
     public List<GameObject> eq = new List<GameObject>();
+    public GameObject[] slots1 = new GameObject[12];
+    public GameObject[] slots2 = new GameObject[12];
+    public GameObject[] slots3 = new GameObject[12];
     public GameObject panelEq;
+    public GameObject Slots1;
+    public GameObject Slots2;
+    public GameObject Slots3;
     public PlayerMovement playerMovement;
+    int PageNumber = 1;
     // Start is called before the first frame update
     void Start()
     {
-        //AddItemToEq(Sword());    //just for debbuging
+        AddItemToEq(Sword());    //just for debbuging
         panelEq.SetActive(false);
     }
 
@@ -40,12 +48,53 @@ public class Equipment : MonoBehaviour
             }
         }
         #endregion
+        #region SwitchingPages
+        switch (PageNumber)
+        {
+            case 1:
+                {
+                    Slots1.SetActive(true);
+                    Slots2.SetActive(false);
+                    Slots3.SetActive(false);
+                    break;
+                }
+            case 2:
+                {
+                    Slots1.SetActive(false);
+                    Slots2.SetActive(true);
+                    Slots3.SetActive(false);
+                    break;
+                }
+            case 3:
+                {
+                    Slots1.SetActive(false);
+                    Slots2.SetActive(false);
+                    Slots3.SetActive(true);
+                    break;
+                }
+            default:
+                break;
+        }
+        #endregion
 
+
+    }
+
+    public void NextBtn()
+    {
+        if (PageNumber < 3)
+            PageNumber++;
+    }
+    public void PreviousBtn()
+    {
+        if (PageNumber > 1)
+            PageNumber--;
     }
 
     public GameObject Sword() //create sword item
     {
         GameObject itemSword = new GameObject();
+        itemSword.name = "Test Sword";
         itemSword.AddComponent<SwordClass>().attackRange = 1;
         itemSword.GetComponent<SwordClass>().coneRange = 45;
         itemSword.GetComponent<SwordClass>().attackSpeed = 1;
@@ -104,16 +153,37 @@ public class Equipment : MonoBehaviour
         //}
 
         // }
-        #endregion
+        #endregion //
         item.GetComponent<ItemClass>().owner = this.gameObject;
         eq.Add(item);
 
 
     }
-    public void ShowingItem()
+    void OnMouseOver()
     {
-        //TO;DO showing panel with item variables
+        
+    }
+
+    public void ShowItemInfo(string name, string description, float value, float weight, float amount)
+    {
+        //show normal item panel with info in arguments in position of cursor
+    }
+    public void ShowMeleeItemInfo(string name, string description, float value, float weight, float amount, float usage, float damage,
+                                  float attackSpeed, float attackRange)
+    {
+        //show melee item panel with info in arguments in position of cursor
+    }
+    public void ShowRangeItemInfo(string name, string description, float value, float weight, float amount, float usage,
+                                  projectileType projectile, FiringMode firingMode, int magazineSize)
+    {
+        //show range item panel with info in arguments in position of cursor
+    }
+
+    public void ShowingItem() //not finished, must add loop(foreach?)
+    {
+        slots1[0].GetComponent<Image>().sprite = eq[0].GetComponent<Image>().sprite;
     }
             
 }
-                        //Script by Daniel Grala
+                        //TO;DO: finish script and maybe another class for collisions(?)
+                        //Script by Daniel Grala 
