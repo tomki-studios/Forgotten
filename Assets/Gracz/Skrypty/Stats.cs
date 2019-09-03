@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Stats : MonoBehaviour {
 
-    //Bartek A.
-    public DangerZone dangerZone;
+    
+
 
     //Timer Do Statystyk Związanych z czasem
     private float FoodTimer = 0;
@@ -24,7 +24,7 @@ public class Stats : MonoBehaviour {
     public float Speed;
     public bool Sprint = false;
 
-    void Start()
+	void Start ()
     {
         //Przypisanie Wartości Zmiennym Statystyk
         Speed = 3;
@@ -43,12 +43,10 @@ public class Stats : MonoBehaviour {
         Energy = MaxEnergy;
         Hunger = FullHunger;
         Thirst = FullThirst;
-
-        dangerZone = FindObjectOfType<DangerZone>();
     }
-
-
-    void Update()
+	
+	
+	void Update ()
     {
         //Timery
         FoodTimer += Time.deltaTime;
@@ -63,7 +61,6 @@ public class Stats : MonoBehaviour {
         EnergyRegen();
         FullEnergy();
         HungerDamage();
-        HpLossOnDangerZone();
         if (Sprint == false)
         {
             HungerDown();
@@ -75,10 +72,10 @@ public class Stats : MonoBehaviour {
     //Funkcja zapobiegająca błędowi z za dużą ilością życia
     void FullHealth()
     {
-        if (Health > MaxHealth)
+        if (Health > MaxHealth) 
         {
             Health = MaxHealth;
-        }
+        } 
     }
     //Funkcja zapobiegająca błędowi z za dużą ilością energi
     void FullEnergy()
@@ -129,10 +126,10 @@ public class Stats : MonoBehaviour {
     //Głód lub pragnienie = strata HP
     void HungerDamage()
     {
-        if (Hunger <= 1 || Thirst <= 1)
+        if(Hunger <= 1 || Thirst <= 1)
         {
-            if (HungerDamageTimer > 1)
-                Health -= 1;
+            if(HungerDamageTimer > 1)
+            Health -= 1;
         }
     }
     void MinimalStats()
@@ -151,11 +148,5 @@ public class Stats : MonoBehaviour {
         }
     }
 
-    void HpLossOnDangerZone() //Bartek A.
-    {
-        if (dangerZone.isGettingDamage)
-            Health -= dangerZone.damagePerSecond * Time.deltaTime;
-    }
-      
 }
 //Kondzio
