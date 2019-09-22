@@ -1,11 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Stats : MonoBehaviour {
 
-    
-
+    //Bartek A.
+    public GameObject YouDiedImage;
+    public GameObject RestartGameButton;
+    public GameObject MainMenuButton;
+    public PlayerMovement Player;
+    public bool Died;
 
     //Timer Do Statystyk Związanych z czasem
     private float FoodTimer = 0;
@@ -43,6 +48,11 @@ public class Stats : MonoBehaviour {
         Energy = MaxEnergy;
         Hunger = FullHunger;
         Thirst = FullThirst;
+
+        YouDiedImage.SetActive(false);
+        RestartGameButton.SetActive(false);
+        MainMenuButton.SetActive(false);
+        Player = GetComponent<PlayerMovement>();
     }
 	
 	
@@ -67,6 +77,10 @@ public class Stats : MonoBehaviour {
         }
         else HungerDownSprint();
 
+        DeathScreen();
+
+        if (Health <= 0) Died = true;
+        else Died = false;
     }
 
     //Funkcja zapobiegająca błędowi z za dużą ilością życia
@@ -148,5 +162,30 @@ public class Stats : MonoBehaviour {
         }
     }
 
+    //Bartek A.
+    void DeathScreen()
+    {
+        if(Died)
+        {
+            Player.enabled = false;
+            YouDiedImage.SetActive(true);
+            RestartGameButton.SetActive(true);
+            MainMenuButton.SetActive(true);
+        }
+        if (!Died)
+        {
+            Player.enabled = true;
+            YouDiedImage.SetActive(false);
+            RestartGameButton.SetActive(false);
+            MainMenuButton.SetActive(false);
+        }
+
+    }
+
+    //Bartek A.
+    public void RestartGame() { SceneManager.LoadScene("Game"); }
+
+    //Bartek A.
+    public void MainMenu() { SceneManager.LoadScene("Menu"); }
 }
 //Kondzio
