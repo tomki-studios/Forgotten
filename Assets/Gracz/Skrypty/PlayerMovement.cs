@@ -20,9 +20,11 @@ public class PlayerMovement : MonoBehaviour {
     //Bartek A.
     public TabReading TR;
     public bool AbleToMove = true;
+    public Animator PlayerAnimator;
 
 	void Start () {
 		characterControler = GetComponent<CharacterController>();
+        PlayerAnimator = GetComponent<Animator>();
 	}
 	
 	
@@ -38,6 +40,8 @@ public class PlayerMovement : MonoBehaviour {
             mouse();
         }
         Read(); // Bartek A.
+        Attack();
+        PlayerAnimator.SetTrigger("noAttack");
 	}
 
 	
@@ -127,6 +131,15 @@ public class PlayerMovement : MonoBehaviour {
                     AbleToMove = true;
                 }
             }
+        }
+    }
+
+    public void Attack() //Bartek A.
+    {
+        if (Input.GetKey(KeyCode.Mouse0))
+        {
+            PlayerAnimator.ResetTrigger("noAttack");
+            PlayerAnimator.SetTrigger("Attack");
         }
     }
 }
